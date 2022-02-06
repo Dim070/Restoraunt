@@ -6,7 +6,8 @@ const initialState = {
     menu: dishes,
     basket: [],
     counterItems: 0,
-    sumPrice: 0
+    sumPrice: 0,
+    price: 0
 }
 
 export const counterSlice = createSlice({
@@ -34,13 +35,12 @@ export const counterSlice = createSlice({
             state.counterItems = state.basket.length
         },
 
-        sumProducts: (state = 0) => {
+        sumProducts: (state ) => {
             let sumPrice = state.basket.reduce((prev, cur) => {
                 return {price: prev.price + cur.price}
-            })
+            }, initialState)
             state.sumPrice = sumPrice.price
         }
-
     },
 
 })
